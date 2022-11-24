@@ -27,15 +27,15 @@ class SbbApplicationTests {
 	public void 질문답변() throws Exception {
 	    //given
 	    Question q1 = new Question();
-		q1.setSubject("스프링이란 뭘까요?");
-		q1.setContent("스프링이랑 스프링부트의 차이에 대해서 알고 싶습니다.");
+		q1.setSubject("CI랑 CD");
+		q1.setContent("CI와 CD의 의미가 궁금해요. 관련 기술은 뭐가 있나요?");
 		q1.setCreateDate(LocalDateTime.now());
 		this.questionRepository.save(q1);//첫번째 질문 저장
-		Question q2 = new Question();
-		q2.setSubject("jpa이란 뭘까요?");
-		q2.setContent("jpa랑 mybatis의 차이에 대해서 알고 싶습니다.");
-		q2.setCreateDate(LocalDateTime.now());
-		this.questionRepository.save(q2);//두번째 질문 저장
+//		Question q2 = new Question();
+//		q2.setSubject("jpa이란 뭘까요?");
+//		q2.setContent("jpa랑 mybatis의 차이에 대해서 알고 싶습니다.");
+//		q2.setCreateDate(LocalDateTime.now());
+//		this.questionRepository.save(q2);//두번째 질문 저장
 	    //when
 
 	    //then

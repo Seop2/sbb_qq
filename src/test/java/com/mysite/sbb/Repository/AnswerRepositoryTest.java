@@ -21,11 +21,11 @@ public class AnswerRepositoryTest {
    private  QuestionRepository questionRepository;
     @Test
     void TestJpa(){
-        Optional<Question>oq = this.questionRepository.findById(12);
+        Optional<Question>oq = this.questionRepository.findById(13);
         assertTrue(oq.isPresent());
         Question q = oq.get();
         Answer a = new Answer();
-        a.setContent("네 자동으로 생성됩니다.");
+        a.setContent("지속적인 통합과 배포를 의미합니다. 대표적인 기술로는 Travis와 Jenkins가 있어요. ");
         a.setQuestion(q);
         a.setCreateDate(LocalDateTime.now());
         this.answerRepository.save(a);
