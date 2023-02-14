@@ -1,9 +1,11 @@
 package com.mysite.sbb.Repository;
 
 import com.mysite.sbb.domain.Question;
+import com.mysite.sbb.service.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class QuestionRepositoryTest {
     @Autowired
     private QuestionRepository questionRepository;
+    @Autowired
+    private QuestionService questionService;
     @Test
     void testJpa(){
         Question q  = this.questionRepository.findBySubject("스프링이란 뭘까요?");
@@ -40,6 +44,7 @@ public class QuestionRepositoryTest {
         q.setSubject("수정된 제목");
         this.questionRepository.save(q);
     }
+
     @Test
     void testJpa5(){
         assertEquals(2, this.questionRepository.count());
@@ -48,5 +53,14 @@ public class QuestionRepositoryTest {
         Question q = oq.get();
         this.questionRepository.delete(q);
         assertEquals(1,this.questionRepository.count());
+    }
+    @Transactional
+    @Test
+    void testJpa6(){
+        for(int i=1;i<=300; i++){
+            String subject = String.format("테스트 데이:[%03d]",i);
+            String content = "test";
+            this.questionService.create(subject, content,null);
+        }
     }
 }
